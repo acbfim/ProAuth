@@ -10,5 +10,6 @@ public interface IUserService
 {
     Task<RetornoDto> RegisterUser (UserDto User);
     Task<RetornoDto> LoginUser (UserLoginDto User);
+    Task<RetornoDto> RefreshToken(TokenDto tokenDto);
     
 }

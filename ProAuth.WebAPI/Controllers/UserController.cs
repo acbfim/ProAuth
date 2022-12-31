@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProAuth.Services.Contracts;
 using ProAuth.WebAPI.Dtos;
-
+using ProAuth.WebAPI.Security;
 
 namespace ProAuth.API.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
@@ -58,5 +58,19 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Teste()
     {
         return Ok("Estou funcionando");
+    }
+
+    [AllowAnonymous]
+    [HttpPost("refresh")]
+    public async Task<IActionResult> verifyToken(TokenDto token)
+    {
+        var retorno = await this._userService.RefreshToken(token);
+        
+        if(retorno.Success){
+            return Ok(retorno);
+        }else
+        {
+            return this.StatusCode(retorno.StatusCode,retorno);
+        }
     }
 }

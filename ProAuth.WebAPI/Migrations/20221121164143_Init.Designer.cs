@@ -11,7 +11,7 @@ using ProSales.Repository.Contexts;
 namespace ProAuth.WebAPI.Migrations
 {
     [DbContext(typeof(ProSalesContext))]
-    [Migration("20221120083306_Init")]
+    [Migration("20221121164143_Init")]
     partial class Init
     {
         /// <inheritdoc />

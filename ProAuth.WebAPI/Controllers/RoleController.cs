@@ -12,7 +12,7 @@ using ProAuth.WebAPI.Dtos;
 
 namespace ProAuth.API.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class RoleController : ControllerBase
 {

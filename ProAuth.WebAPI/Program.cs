@@ -21,6 +21,14 @@ builder.Services.AddDbContext<ProSalesContext>(
         .EnableDetailedErrors()
 );
 
+builder.Services.AddCors(options =>
+                {
+                    options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+                });
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers().AddJsonOptions(x =>
@@ -105,6 +113,8 @@ var app = builder.Build();
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("CorsPolicy");
 
 app.MapControllers();
 

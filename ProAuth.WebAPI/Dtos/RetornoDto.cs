@@ -10,7 +10,8 @@ namespace ProAuth.WebAPI.Dtos
     {
         public string Message { get; set; } = "Erro ao realizar ação";
         public bool Success { get; set; } = false;
-        public Object Object { get; set; }
         public int StatusCode { get; set; }
+        public Object Object { get; set; }
+
     }
 }
